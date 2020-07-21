@@ -2,5 +2,5 @@ source "https://rubygems.org"
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
-# Specify your gem's dependencies in ruby_custom_template_page.gemspec
+# Specify your gem's dependencies in custom_template_page.gemspec
 gemspec

@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "ruby_custom_template_page"
+require "custom_template_page"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
