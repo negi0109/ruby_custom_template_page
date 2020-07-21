@@ -1,6 +1,6 @@
 # CustomTemplatePage
 
-[![Build Status](https://travis-ci.org/negi0109/custom_template_page.svg?branch=master)](https://travis-ci.org/negi0109/custom_template_page)
+[![Build Status](https://travis-ci.org/negi0109/ruby_custom_template_page.svg?branch=master)](https://travis-ci.org/negi0109/ruby_custom_template_page)
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/custom_template_page`. To experiment with that code, run `bin/console` for an interactive prompt.
 
