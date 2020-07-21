@@ -1,25 +1,25 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "ruby_custom_template_page/version"
+require "custom_template_page/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "ruby_custom_template_page"
-  spec.version       = RubyCustomTemplatePage::VERSION
+  spec.name          = "custom_template_page"
+  spec.version       = CustomTemplatePage::VERSION
   spec.authors       = ["negi0109"]
   spec.email         = ["negi0109.seg@gmail.com"]
 
   spec.summary       = "User-customizable Page library"
   spec.description   = "User-customizable Page library"
-  spec.homepage      = "https://github.com/negi0109/ruby_custom_template_page"
+  spec.homepage      = "https://github.com/negi0109/custom_template_page"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
   if spec.respond_to?(:metadata)
     spec.metadata["homepage_uri"] = spec.homepage
-    spec.metadata["source_code_uri"] = "https://github.com/negi0109/ruby_custom_template_page"
-    spec.metadata["changelog_uri"] = "https://github.com/negi0109/ruby_custom_template_page/releases"
+    spec.metadata["source_code_uri"] = "https://github.com/negi0109/custom_template_page"
+    spec.metadata["changelog_uri"] = "https://github.com/negi0109/custom_template_page/releases"
   else
     raise "RubyGems 2.0 or newer is required to protect against " \
       "public gem pushes."
