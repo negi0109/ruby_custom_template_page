@@ -4,20 +4,18 @@ RSpec.describe CustomTemplatePage do
   end
 
   describe "convert" do
-    it "string data" do
-      source = "@a @b"
-      data = { a: "abc", b: "def" }
+    let(:source) { "@a @b" }
+    let(:data) {{}}
+    subject { CustomTemplatePage.convert(source, data) }
 
-      out = CustomTemplatePage.convert(source, data)
-      expect(out).to eq "abc def"
+    context "string data" do
+      let(:data) {{ a: "abc", b: "def" }}
+      it { is_expected.to eq "abc def" }
     end
 
-    it "numver data" do
-      source = "@a @b"
-      data = { a: 12, b: 23 }
-
-      out = CustomTemplatePage.convert(source, data)
-      expect(out).to eq "12 23"
+    context "numver data" do
+      let(:data) {{ a: 12, b: 23 }}
+      it { is_expected.to eq "12 23" }
     end
   end
 end
