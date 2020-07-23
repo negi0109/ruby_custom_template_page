@@ -11,5 +11,13 @@ RSpec.describe CustomTemplatePage do
       out = CustomTemplatePage.convert(source, data)
       expect(out).to eq "abc def"
     end
+
+    it "numver data" do
+      source = "@a @b"
+      data = { a: 12, b: 23 }
+
+      out = CustomTemplatePage.convert(source, data)
+      expect(out).to eq "12 23"
+    end
   end
 end
