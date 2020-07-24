@@ -7,12 +7,17 @@ module CustomTemplatePage
   def self.convert(source, datas)
     root = "<root>#{source}</root>"
     page = REXML::Document.new(root)
-    children = page.root.children[0]
-    tmp = children.to_s
-    datas.each do |k, v|
-      tmp = tmp.to_s.gsub("@#{k}", v.to_s)
+
+    out_text = ''
+    page.root.children.each do |child|
+      tmp = child.to_s
+      datas.each do |k, v|
+        tmp = tmp.gsub("@#{k}", v.to_s)
+      end
+
+      out_text += tmp
     end
 
-    tmp
+    out_text
   end
 end

@@ -26,6 +26,20 @@ RSpec.describe CustomTemplatePage do
 
         it { is_expected.to eq "<p>12 23</p>"}
       end
+
+      context "2 tag" do
+        let(:source) { <<~HTML
+          <p>@a</p>
+          <p>@b</p>
+          HTML
+        }
+
+        it { is_expected.to eq <<~HTML
+          <p>12</p>
+          <p>23</p>
+          HTML
+        }
+      end
     end
   end
 end
