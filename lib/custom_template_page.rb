@@ -26,8 +26,22 @@ module CustomTemplatePage
       node.value = tmp
     when :element then
       if node.parent?
-        node.each_child do |child|
-          convert_dfs!(child, datas)
+        if node.name == 'each' then
+          prev_node = node
+          datas[node.attributes["value"].to_sym].each do |value|
+            node.children.each do |child|
+              tmp = child.parent? ? child.deep_clone : child.clone
+              convert_dfs!(tmp, datas.merge({ value: value }))
+              prev_node.next_sibling = tmp
+              prev_node = tmp
+            end
+          end
+          pp node.parent.children
+          node.remove
+        else
+          node.each_child do |child|
+            convert_dfs!(child, datas)
+          end
         end
       end
     end

@@ -57,6 +57,13 @@ RSpec.describe CustomTemplatePage do
           HTML
         }
       end
+
+      context "each tag" do
+        let(:source) { "<each value='a'><p>@value</p></each>" }
+        let(:data) {{ a: [3, 4, 5]}}
+
+        it { is_expected.to eq  "<p>3</p><p>4</p><p>5</p>" }
+      end
     end
   end
 end
