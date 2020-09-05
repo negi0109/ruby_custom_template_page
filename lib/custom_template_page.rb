@@ -1,5 +1,5 @@
-require "custom_template_page/version"
-require "rexml/document"
+require 'custom_template_page/version'
+require 'rexml/document'
 
 module CustomTemplatePage
   class Error < StandardError; end
@@ -11,24 +11,24 @@ module CustomTemplatePage
     convert_dfs!(page.root, datas)
 
     out_text = ''
-    page.root.children.each{ |child| out_text += child.to_s }
+    page.root.children.each { |child| out_text += child.to_s }
 
     out_text
   end
 
   def self.convert_dfs!(node, datas)
     case node.node_type
-    when :text then
+    when :text
       tmp = node.value
       datas.each do |k, v|
         tmp = tmp.gsub("@#{k}", v.to_s)
       end
       node.value = tmp
-    when :element then
+    when :element
       if node.parent?
-        if node.name == 'each' then
+        if node.name == 'each'
           prev_node = node
-          datas[node.attributes["value"].to_sym].each do |value|
+          datas[node.attributes['value'].to_sym].each do |value|
             node.children.each do |child|
               tmp = child.parent? ? child.deep_clone : child.clone
               convert_dfs!(tmp, datas.merge({ value: value }))
@@ -38,9 +38,9 @@ module CustomTemplatePage
           end
           pp node.parent.children
           node.remove
-        elsif node.name == 'alias' then
-          key = node.attributes["as"].to_sym
-          value = datas[node.attributes["value"].to_sym]
+        elsif node.name == 'alias'
+          key = node.attributes['as'].to_sym
+          value = datas[node.attributes['value'].to_sym]
 
           prev_node = node
           node.children.each do |child|
