@@ -64,6 +64,13 @@ RSpec.describe CustomTemplatePage do
 
         it { is_expected.to eq  "<p>3</p><p>4</p><p>5</p>" }
       end
+
+      context "alias tag" do
+        let(:source) { "<alias as='bar' value='a'>@bar</alias>" }
+        let(:data) {{ a: 3 }}
+
+        it { is_expected.to eq "3" }
+      end
     end
   end
 end
