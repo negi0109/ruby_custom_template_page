@@ -1,0 +1,24 @@
+name: rspec
+on:
+  pull_request:
+    branches: 
+      - master
+  push:
+    branches: 
+      - master
+
+jobs:
+  run_spec:
+    name: Run spec
+    runs_on: ubuntu_latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up Ruby 2.6.3
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6.3
+      - name: Test with Rspec
+        run: |
+          gem install bundler
+          bundle install --path vendor/bundle --quiet --jobs 4 --retry 3
+          bundle exec rspec
