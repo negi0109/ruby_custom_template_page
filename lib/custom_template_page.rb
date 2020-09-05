@@ -38,6 +38,20 @@ module CustomTemplatePage
           end
           pp node.parent.children
           node.remove
+        elsif node.name == 'alias' then
+          key = node.attributes["as"].to_sym
+          value = datas[node.attributes["value"].to_sym]
+
+          prev_node = node
+          node.children.each do |child|
+            tmp_data = {}
+            tmp_data[key] = value
+            tmp = child.parent? ? child.deep_clone : child.clone
+            convert_dfs!(tmp, datas.merge(tmp_data))
+            prev_node.next_sibling = tmp
+            prev_node = tmp
+          end
+          node.remove
         else
           node.each_child do |child|
             convert_dfs!(child, datas)
