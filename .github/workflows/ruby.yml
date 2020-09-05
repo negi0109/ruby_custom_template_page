@@ -1,4 +1,4 @@
-name: rspec
+name: ruby
 on:
   pull_request:
     branches:
@@ -23,3 +23,19 @@ jobs:
           bundle install --path vendor/bundle --quiet --jobs 4 --retry 3
       - name: rspec
         run: bundle exec rspec
+  code-style:
+    name: code style
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up Ruby 2.6
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6.*
+      - name: setup gem
+        run: |
+          gem install bundler -v 1.17.2
+          bundle install --path vendor/bundle --quiet --jobs 4 --retry 3
+      - name: rubocop
+        run: bundle exec rubocop
