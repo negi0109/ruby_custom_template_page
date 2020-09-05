@@ -1,6 +1,7 @@
 # CustomTemplatePage
 
-![ruby](https://github.com/negi0109/ruby_custom_template_page/workflows/ruby/badge.svg)
+![code check](https://github.com/negi0109/ruby_custom_template_page/workflows/code%20check/badge.svg)
+![rspec](https://github.com/negi0109/ruby_custom_template_page/workflows/rspec/badge.svg)
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/custom_template_page`. To experiment with that code, run `bin/console` for an interactive prompt.
 
